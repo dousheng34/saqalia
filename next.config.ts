@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  transpilePackages: ['@splinetool/react-spline', '@splinetool/runtime'],
+  transpilePackages: [],
   images: {
     domains: ['firebasestorage.googleapis.com', 'lh3.googleusercontent.com'],
   },
