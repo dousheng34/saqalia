@@ -1,0 +1,47 @@
+.wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.spline {
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none;
+}
+
+.fallback {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse 80% 80% at 60% 40%,
+    rgba(124, 58, 237, 0.2) 0%,
+    rgba(6, 182, 212, 0.1) 50%,
+    transparent 100%
+  );
+}
+
+/* Bottom fade — blends 3D into content */
+.fadeBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  background: linear-gradient(transparent, var(--bg-base));
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Left fade — content area breathing room */
+.fadeLeft {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--bg-base) 0%, rgba(10,10,26,0.6) 60%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}

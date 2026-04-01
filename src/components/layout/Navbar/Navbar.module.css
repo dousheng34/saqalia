@@ -1,0 +1,301 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-sticky);
+  height: var(--nav-height);
+  transition: all var(--transition-default);
+}
+
+.navbar.scrolled {
+  background: rgba(6, 6, 17, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.4);
+}
+
+.navInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  gap: var(--space-8);
+}
+
+/* ---- Logo ---- */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logoIcon {
+  display: flex;
+  filter: drop-shadow(0 0 12px rgba(124, 58, 237, 0.5));
+  transition: filter var(--transition-default);
+}
+
+.logo:hover .logoIcon {
+  filter: drop-shadow(0 0 20px rgba(124, 58, 237, 0.8));
+}
+
+.logoText {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: 0.1em;
+  transition: all var(--transition-fast);
+}
+
+.logoAccent {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ---- Nav Links ---- */
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  flex: 1;
+  justify-content: center;
+}
+
+.navLink {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  right: 50%;
+  height: 2px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-default);
+}
+
+.navLink:hover {
+  color: var(--text-primary);
+  background: var(--glass-bg);
+}
+
+.navLink:hover::after,
+.navLink.active::after {
+  left: var(--space-4);
+  right: var(--space-4);
+}
+
+.navLink.active {
+  color: var(--text-primary);
+  background: var(--glass-bg);
+}
+
+/* ---- Right Controls ---- */
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+
+/* ---- Language Selector ---- */
+.langSelector {
+  position: relative;
+}
+
+.langBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.5rem 0.875rem;
+  border-radius: var(--radius-md);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.langBtn:hover {
+  background: var(--glass-bg-hover);
+  color: var(--text-primary);
+  border-color: var(--glass-border-hover);
+}
+
+.langDropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--bg-elevated);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-2);
+  min-width: 100px;
+  box-shadow: var(--shadow-lg);
+  animation: fadeIn 0.15s ease;
+}
+
+.langItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.langItem:hover {
+  background: var(--glass-bg);
+  color: var(--text-primary);
+}
+
+.langActive {
+  color: var(--color-primary-light);
+  background: rgba(124, 58, 237, 0.1);
+}
+
+/* ---- CTA Buttons ---- */
+.loginBtn {
+  padding: 0.5rem 1.25rem;
+  font-size: var(--text-sm);
+}
+
+.ctaBtn {
+  padding: 0.6rem 1.5rem;
+  font-size: var(--text-sm);
+  position: relative;
+}
+
+.ctaBtnDot {
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ---- Mobile Toggle ---- */
+.menuToggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.menuToggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text-secondary);
+  border-radius: 2px;
+  transition: all var(--transition-default);
+}
+
+.menuOpen span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+  background: var(--text-primary);
+}
+.menuOpen span:nth-child(2) { opacity: 0; }
+.menuOpen span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+  background: var(--text-primary);
+}
+
+/* ---- Mobile Menu ---- */
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-6);
+  background: rgba(6, 6, 17, 0.95);
+  backdrop-filter: blur(24px);
+  border-top: 1px solid var(--glass-border);
+  animation: fadeIn 0.2s ease;
+}
+
+.mobileLink {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: var(--text-md);
+  font-weight: 500;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.mobileLink:hover {
+  color: var(--text-primary);
+  background: var(--glass-bg);
+}
+
+.mobileDivider {
+  height: 1px;
+  background: var(--glass-border);
+  margin: var(--space-2) 0;
+}
+
+.mobileLangRow {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.mobileLangBtn {
+  flex: 1;
+  text-align: center;
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  background: var(--glass-bg);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  text-decoration: none;
+  border: 1px solid var(--glass-border);
+  transition: all var(--transition-fast);
+}
+
+.mobileLangActive {
+  background: rgba(124, 58, 237, 0.15);
+  color: var(--color-primary-light);
+  border-color: rgba(124, 58, 237, 0.3);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 1024px) {
+  .navLinks { display: none; }
+  .loginBtn { display: none; }
+}
+
+@media (max-width: 768px) {
+  .ctaBtn { display: none; }
+  .menuToggle { display: flex; }
+}
+
+@media (min-width: 769px) {
+  .mobileMenu { display: none; }
+}

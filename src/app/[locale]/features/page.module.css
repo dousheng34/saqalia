@@ -1,0 +1,22 @@
+.heroBar {
+  padding: calc(var(--nav-height) + var(--space-16)) 0 var(--space-12);
+  background: var(--bg-base);
+  border-bottom: 1px solid var(--glass-border);
+  text-align: center;
+}
+
+.heroTitle {
+  font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
+  margin: var(--space-4) 0;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heroSubtitle {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
