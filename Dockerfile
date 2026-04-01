@@ -39,6 +39,10 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --from=builder /app/messages ./messages
 
+# Copy public assets (create dir first to avoid errors if empty)
+RUN mkdir -p ./public
+COPY --from=builder /app/public ./public
+
 USER nextjs
 
 EXPOSE 3000
